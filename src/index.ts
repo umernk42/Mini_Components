@@ -3,6 +3,7 @@ import express ,{Express,Request,Response} from 'express';
 import dotenv from 'dotenv';
 import mongoose, {ConnectOptions} from 'mongoose';
 import cors from 'cors';
+import projectRoutes from './routes/ProjectRoutes'
 
 dotenv.config();
 
@@ -19,9 +20,8 @@ app.use((req: Request,res:Response,next) => {
     next();
 })
 
-app.get('/',(req: Request,res:Response) => {
-    res.send("Express + Typescript Server");
-});
+//routes
+app.use("/api/projects",projectRoutes);
 
 //Connect to DB
 mongoose
